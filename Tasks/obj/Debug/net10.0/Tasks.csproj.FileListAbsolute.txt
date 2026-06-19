@@ -1,0 +1,11 @@
+C:\Users\Катя\Projects\TasksChebotareva\Tasks\bin\Debug\net10.0\Tasks.deps.json
+C:\Users\Катя\Projects\TasksChebotareva\Tasks\bin\Debug\net10.0\Tasks.dll
+C:\Users\Катя\Projects\TasksChebotareva\Tasks\bin\Debug\net10.0\Tasks.pdb
+C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\Tasks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\Tasks.AssemblyInfoInputs.cache
+C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\Tasks.AssemblyInfo.cs
+C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\Tasks.csproj.CoreCompileInputs.cache
+C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\Tasks.dll
+C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\refint\Tasks.dll
+C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\Tasks.pdb
+C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\ref\Tasks.dll

@@ -98,3 +98,4 @@ C:\Users\Катя\Projects\TasksChebotareva\Tasks.Tests\obj\Debug\net10.0\refint
 C:\Users\Катя\Projects\TasksChebotareva\Tasks.Tests\obj\Debug\net10.0\Tasks.Tests.pdb
 C:\Users\Катя\Projects\TasksChebotareva\Tasks.Tests\obj\Debug\net10.0\Tasks.Tests.genruntimeconfig.cache
 C:\Users\Катя\Projects\TasksChebotareva\Tasks.Tests\obj\Debug\net10.0\ref\Tasks.Tests.dll
+C:\Users\Катя\Projects\TasksChebotareva\Tasks.Tests\obj\Debug\net10.0\Tasks.Tests.sourcelink.json

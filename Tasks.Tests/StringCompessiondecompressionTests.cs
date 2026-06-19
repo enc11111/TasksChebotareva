@@ -15,49 +15,49 @@ public class StringCompressionDecompressionTests
     {
         var strOrig = "rrrrrrrrrrrrr";
         var res = StringCompressionDecompression.StringCompress(strOrig);
-        Assert.Equal("r13", res);        
+        Assert.Equal("r13", res);
     }
     [Fact]
     public void StringCompressionEmptyStrTest3()
     {
         string strOrig = string.Empty;
-        var res = StringCompressionDecompression.StringCompress(strOrig);
-        Assert.Equal(string.Empty, res);        
+        Assert.Throws<ArgumentException>(() => StringCompressionDecompression.StringCompress(strOrig));
+        //Assert.Equal(string.Empty, res);
     }
     [Fact]
     public void StringCompressionOnlyOneLetterTest4()
     {
         string strOrig = "a";
         var res = StringCompressionDecompression.StringCompress(strOrig);
-        Assert.Equal("a", res);        
+        Assert.Equal("a", res);
     }
     [Fact]
-     public void StringDecompressionOneLetterTest5()
+    public void StringDecompressionOneLetterTest5()
     {
         var strOrig = "ra3yb2c3d2e";
         var res = StringCompressionDecompression.StringDecompress(strOrig);
-        Assert.Equal("raaaybbcccdde", res);        
+        Assert.Equal("raaaybbcccdde", res);
     }
     [Fact]
-     public void StringDecompressEmptyStrTest6()
+    public void StringDecompressEmptyStrTest6()
     {
         string strOrig = string.Empty;
         var res = StringCompressionDecompression.StringDecompress(strOrig);
-        Assert.Equal(string.Empty, res);        
+        Assert.Equal(string.Empty, res);
     }
     [Fact]
-     public void StringDecompressionTheSameLetterTest7()
+    public void StringDecompressionTheSameLetterTest7()
     {
         var strOrig = "r13";
         var res = StringCompressionDecompression.StringDecompress(strOrig);
-        Assert.Equal("rrrrrrrrrrrrr", res);        
+        Assert.Equal("rrrrrrrrrrrrr", res);
     }
     [Fact]
     public void StringCompressionOnlyOneLetterTest8()
     {
         string strOrig = "a";
         var res = StringCompressionDecompression.StringDecompress(strOrig);
-        Assert.Equal("a", res);        
+        Assert.Equal("a", res);
     }
     [Fact]
     public void StringCompressionDecompressionRepetitionsTest9()
@@ -65,6 +65,6 @@ public class StringCompressionDecompressionTests
         string strOrig = "abbaaca";
         var resCompressed = StringCompressionDecompression.StringCompress(strOrig);
         var resDecompressed = StringCompressionDecompression.StringDecompress(resCompressed);
-        Assert.Equal(strOrig, resDecompressed);        
+        Assert.Equal(strOrig, resDecompressed);
     }
 }

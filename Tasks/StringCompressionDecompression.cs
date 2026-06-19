@@ -2,25 +2,36 @@
 
 public class StringCompressionDecompression
 {
-	 public static string StringCompress(string strOrig)
+    private static bool IsSmallLatinLetters(string str)
+    {
+        foreach (char letter in str)
         {
-            string strCompressed = string.Empty;
-            if(strOrig != null && strOrig.Length > 0)
+            if (letter < 'a' || letter > 'z')
+                return false;
+        }
+        return true;
+    }
+    public static string StringCompress(string strOrig)
+    {
+        string strCompressed = string.Empty;
+        if (strOrig != null && strOrig.Length > 0)
+        {
+            if (IsSmallLatinLetters(strOrig))
             {
                 strCompressed += strOrig[0].ToString();
                 int i = 0,
                     count = 0;
-                for(i = 1; i < strOrig.Length; i++)
+                for (i = 1; i < strOrig.Length; i++)
                 {
-                    if(strOrig[i] == strOrig[i - 1])
+                    if (strOrig[i] == strOrig[i - 1])
                     {
                         count++;
-                        if(i == strOrig.Length - 1)
+                        if (i == strOrig.Length - 1)
                             strCompressed += (count + 1).ToString();
                     }
                     else
                     {
-                        if(count > 0)
+                        if (count > 0)
                         {
                             strCompressed += (count + 1).ToString();
                             count = 0;
@@ -29,59 +40,64 @@ public class StringCompressionDecompression
                     }
                 }
             }
-            return strCompressed;
+            else 
+                throw new ArgumentOutOfRangeException("The string should contain only small Latin letters!");
         }
-      public static string StringDecompress(string strCompressed)
-		{
-			string strDecompressed = string.Empty;
-			if(strCompressed != null && strCompressed.Length > 0)
-			{
-				int i = 0,
-					j = 0,
-                    curNumber = 0;
-				string strNumber = string.Empty;
-                for(i = 0; i < strCompressed.Length; i++)
-				{
-					if(strCompressed[i] >= '0' && strCompressed[i] <= '9')
-					{
-                        strNumber += strCompressed[i];
-                        if(i == strCompressed.Length - 1)
+        else 
+            throw new ArgumentException("The string shouldn't be null or empty!");
+        return strCompressed;
+    }
+    public static string StringDecompress(string strCompressed)
+    {
+        string strDecompressed = string.Empty;
+        if (strCompressed != null && strCompressed.Length > 0)
+        {
+            int i = 0,
+                j = 0,
+                curNumber = 0;
+            string strNumber = string.Empty;
+            for (i = 0; i < strCompressed.Length; i++)
+            {
+                if (strCompressed[i] >= '0' && strCompressed[i] <= '9')
+                {
+                    strNumber += strCompressed[i];
+                    if (i == strCompressed.Length - 1)
+                    {
+                        if (strNumber != null && strNumber.Length > 0)
                         {
-                            if(strNumber != null && strNumber.Length > 0)
-                            {
-						        try
-                                {
-                                    curNumber = Convert.ToInt32(strNumber);
-                                }
-                                catch{}
-						        for(j = 0; j < curNumber - 1; j++)
-						        {
-							        strDecompressed += strCompressed[i - (strNumber.Length)];
-						        }
-                            }
-                        }
-                    }
-					else
-					{
-                        if(strNumber != null && strNumber.Length > 0)
-                        {
-						    try
+                            try
                             {
                                 curNumber = Convert.ToInt32(strNumber);
                             }
-                            catch{}
-						    for(j = 0; j < curNumber - 1; j++)
-						    {
-							    strDecompressed += strCompressed[i - (strNumber.Length + 1)];
-						    }
+                            catch { }
+                            for (j = 0; j < curNumber - 1; j++)
+                            {
+                                strDecompressed += strCompressed[i - (strNumber.Length)];
+                            }
                         }
-                        strDecompressed += strCompressed[i];
+                    }
+                }
+                else
+                {
+                    if (strNumber != null && strNumber.Length > 0)
+                    {
+                        try
+                        {
+                            curNumber = Convert.ToInt32(strNumber);
+                        }
+                        catch { }
+                        for (j = 0; j < curNumber - 1; j++)
+                        {
+                            strDecompressed += strCompressed[i - (strNumber.Length + 1)];
+                        }
+                    }
+                    strDecompressed += strCompressed[i];
 
-                        curNumber = 0;
-                        strNumber = string.Empty;
-					}
-				}
-			}
-			return strDecompressed;
-		}
+                    curNumber = 0;
+                    strNumber = string.Empty;
+                }
+            }
+        }
+        return strDecompressed;
+    }
 }

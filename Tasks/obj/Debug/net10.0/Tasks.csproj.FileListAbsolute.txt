@@ -9,3 +9,4 @@ C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\Tasks.dll
 C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\refint\Tasks.dll
 C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\Tasks.pdb
 C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\ref\Tasks.dll
+C:\Users\Катя\Projects\TasksChebotareva\Tasks\obj\Debug\net10.0\Tasks.sourcelink.json

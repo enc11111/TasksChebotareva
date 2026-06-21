@@ -1,4 +1,5 @@
-﻿namespace Tasks;
+﻿using System.Text.RegularExpressions;
+namespace Tasks;
 
 public class StringCompressionDecompression
 {
@@ -40,10 +41,10 @@ public class StringCompressionDecompression
                     }
                 }
             }
-            else 
+            else
                 throw new ArgumentOutOfRangeException("The string should contain only small Latin letters!");
         }
-        else 
+        else
             throw new ArgumentException("The string shouldn't be null or empty!");
         return strCompressed;
     }
@@ -52,16 +53,35 @@ public class StringCompressionDecompression
         string strDecompressed = string.Empty;
         if (strCompressed != null && strCompressed.Length > 0)
         {
-            int i = 0,
-                j = 0,
-                curNumber = 0;
-            string strNumber = string.Empty;
-            for (i = 0; i < strCompressed.Length; i++)
+            string pattern = "^([a-z])+(([1-9]+[0-9]*)*[a-z]*)*$";//small latin latters and numbers
+            if (Regex.Match(strCompressed, pattern).Success)
             {
-                if (strCompressed[i] >= '0' && strCompressed[i] <= '9')
+                int i = 0,
+                    j = 0,
+                    curNumber = 0;
+                string strNumber = string.Empty;
+                for (i = 0; i < strCompressed.Length; i++)
                 {
-                    strNumber += strCompressed[i];
-                    if (i == strCompressed.Length - 1)
+                    if (strCompressed[i] >= '0' && strCompressed[i] <= '9')
+                    {
+                        strNumber += strCompressed[i];
+                        if (i == strCompressed.Length - 1)
+                        {
+                            if (strNumber != null && strNumber.Length > 0)
+                            {
+                                try
+                                {
+                                    curNumber = Convert.ToInt32(strNumber);
+                                }
+                                catch { }
+                                for (j = 0; j < curNumber - 1; j++)
+                                {
+                                    strDecompressed += strCompressed[i - (strNumber.Length)];
+                                }
+                            }
+                        }
+                    }
+                    else
                     {
                         if (strNumber != null && strNumber.Length > 0)
                         {
@@ -72,32 +92,21 @@ public class StringCompressionDecompression
                             catch { }
                             for (j = 0; j < curNumber - 1; j++)
                             {
-                                strDecompressed += strCompressed[i - (strNumber.Length)];
+                                strDecompressed += strCompressed[i - (strNumber.Length + 1)];
                             }
                         }
-                    }
-                }
-                else
-                {
-                    if (strNumber != null && strNumber.Length > 0)
-                    {
-                        try
-                        {
-                            curNumber = Convert.ToInt32(strNumber);
-                        }
-                        catch { }
-                        for (j = 0; j < curNumber - 1; j++)
-                        {
-                            strDecompressed += strCompressed[i - (strNumber.Length + 1)];
-                        }
-                    }
-                    strDecompressed += strCompressed[i];
+                        strDecompressed += strCompressed[i];
 
-                    curNumber = 0;
-                    strNumber = string.Empty;
+                        curNumber = 0;
+                        strNumber = string.Empty;
+                    }
                 }
             }
+            else
+                throw new ArgumentOutOfRangeException("The string should contain only small Latin letters and numbers after them!");
         }
+        else
+            throw new ArgumentException("The string shouldn't be null or empty!");
         return strDecompressed;
     }
 }

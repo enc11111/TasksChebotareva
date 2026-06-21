@@ -1,6 +1,6 @@
 using Tasks;
 namespace Tasks.Tests;
-
+  
 public class StringCompressionDecompressionTests
 {
     [Fact]
@@ -42,8 +42,7 @@ public class StringCompressionDecompressionTests
     public void StringDecompressEmptyStrTest6()
     {
         string strOrig = string.Empty;
-        var res = StringCompressionDecompression.StringDecompress(strOrig);
-        Assert.Equal(string.Empty, res);
+        Assert.Throws<ArgumentException>(() => StringCompressionDecompression.StringDecompress(strOrig));
     }
     [Fact]
     public void StringDecompressionTheSameLetterTest7()
@@ -53,18 +52,30 @@ public class StringCompressionDecompressionTests
         Assert.Equal("rrrrrrrrrrrrr", res);
     }
     [Fact]
-    public void StringCompressionOnlyOneLetterTest8()
+    public void StringDecompressionOnlyOneLetterTest8()
     {
         string strOrig = "a";
         var res = StringCompressionDecompression.StringDecompress(strOrig);
         Assert.Equal("a", res);
     }
-    [Fact]
+	[Fact]
     public void StringCompressionDecompressionRepetitionsTest9()
     {
         string strOrig = "abbaaca";
         var resCompressed = StringCompressionDecompression.StringCompress(strOrig);
         var resDecompressed = StringCompressionDecompression.StringDecompress(resCompressed);
         Assert.Equal(strOrig, resDecompressed);
+    }
+    [Fact]
+    public void StringCompressionWrongFormatTest10()
+    {
+        string strOrig = "10";
+        Assert.Throws<ArgumentOutOfRangeException>(() => StringCompressionDecompression.StringCompress(strOrig));
+    }
+    [Fact]
+    public void StringDecompressionWrongFormatTest11()
+    {
+        string strOrig = "10g";
+        Assert.Throws<ArgumentOutOfRangeException>(() => StringCompressionDecompression.StringDecompress(strOrig));
     }
 }

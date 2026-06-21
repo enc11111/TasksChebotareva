@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="MyServer/MyServer.csproj" />
   <Project Path="Tasks.Tests/Tasks.Tests.csproj" />
   <Project Path="Tasks/Tasks.csproj" />
 </Solution>
